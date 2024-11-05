@@ -431,20 +431,24 @@ namespace tilesAdvanced {
         let column = startCol
         let row = randint(0, tilesAdvanced.getTilemapHeight() - 1)
         let tilesInPath = []
-        tilesInPath.push(tiles.getTileLocation(column, row))
+        let half_width = Math.floor(width / 2)
+        for (let i = -half_width; i <= half_width; i++) {
+            let tile = tiles.getTileLocation(column, row + i)
+            tilesInPath.push(tile)
+        }
         while (column != endCol) {
             if (Math.percentChance(turnChancePercentage)) {
                 row += randint(0, 1) * 2 - 1
                 row = Math.constrain(row, 0, tilesAdvanced.getTilemapHeight() - 1)
-                let start_col = Math.floor(width / 2)
-                for (let i = -start_col; i < start_col; i++) {
+                let half_width = Math.floor(width / 2)
+                for (let i = -half_width; i <= half_width; i++) {
                     let tile = tiles.getTileLocation(column + i, row)
                     tilesInPath.push(tile)
                 }
             } else {
                 column += step
-                let start_row = Math.floor(width / 2)
-                for (let i = -start_row; i < start_row; i++) {
+                let half_width = Math.floor(width / 2)
+                for (let i = -half_width; i <= half_width; i++) {
                     let tile = tiles.getTileLocation(column, row + i)
                     tilesInPath.push(tile)
                 }
@@ -462,20 +466,22 @@ namespace tilesAdvanced {
         let row = startRow
         let column = randint(0, tilesAdvanced.getTilemapWidth() - 1)
         let tilesInPath = []
-        tilesInPath.push(tiles.getTileLocation(column, row))
+        let half_width = Math.floor(width / 2)
+        for (let i = -half_width; i <= half_width; i++) {
+            let tile = tiles.getTileLocation(column + i, row)
+            tilesInPath.push(tile)
+        }
         while (row != endRow) {
             if (Math.percentChance(turnChancePercentage)) {
                 column += randint(0, 1) * 2 - 1
                 column = Math.constrain(row, 0, tilesAdvanced.getTilemapWidth() - 1)
-                let start_row = Math.floor(width / 2)
-                for (let i = -start_row; i < start_row; i++) {
+                for (let i = -half_width; i <= half_width; i++) {
                     let tile = tiles.getTileLocation(column, row + i)
                     tilesInPath.push(tile)
                 }
             } else {
                 row += step
-                let start_col = Math.floor(width / 2)
-                for (let i = -start_col; i < start_col; i++) {
+                for (let i = -half_width; i <= half_width; i++) {
                     let tile = tiles.getTileLocation(column + i, row)
                     tilesInPath.push(tile)
                 }
@@ -484,6 +490,7 @@ namespace tilesAdvanced {
         }
         return tilesInPath
     }
+
 
     //TODO include wall togle on these
 
