@@ -425,7 +425,7 @@ namespace tilesAdvanced {
         return sortedTiles
     }
 
-    function generateHorizontalPath(direction: PathDirection, turnChancePercentage: number, width: number, startCol: number, endCol: number): tiles.Location[] {
+    function generateHorizontalPath(direction: PathDirection, turnChancePercentage: number, startCol: number, endCol: number): tiles.Location[] {
         let step = 1
         if (direction == PathDirection.Left) {
             let step = -1
@@ -436,27 +436,18 @@ namespace tilesAdvanced {
         tilesInPath.push(tiles.getTileLocation(column, row))
         while (column != endCol) {
             if (Math.percentChance(turnChancePercentage)) {
-                row += randint(0, 1) * 2 - 1
-                row = Math.constrain(row, 0, tilesAdvanced.getTilemapHeight() - 1)
-                let start_col = Math.floor(width / 2)
-                for (let i = -start_col; i < start_col; i++) {
-                    let tile = tiles.getTileLocation(column + i, row)
-                    tilesInPath.push(tile)
-                }
-            } else {
                 column += step
-                let start_row = Math.floor(width / 2)
-                for (let i = -start_row; i < start_row; i++) {
-                    let tile = tiles.getTileLocation(column, row + i)
-                    tilesInPath.push(tile)
-                }
+            } else {
+                row += randint(0, 1) * 2 - 1
             }
-            tilesInPath.push(tiles.getTileLocation(column, row))
+            row = Math.constrain(row, 0, tilesAdvanced.getTilemapHeight() - 1)
+            let tile = tiles.getTileLocation(column, row)
+            tilesInPath.push(tile)
         }
         return tilesInPath
     }
 
-    function generateVerticalPath(direction: PathDirection, turnChancePercentage: number, width: number, startRow: number, endRow: number): tiles.Location[] {
+    function generateVerticalPath(direction: PathDirection, turnChancePercentage: number, startRow: number, endRow: number): tiles.Location[] {
         let step = 1
         if (direction == PathDirection.Up) {
             let step = -1
@@ -467,22 +458,13 @@ namespace tilesAdvanced {
         tilesInPath.push(tiles.getTileLocation(column, row))
         while (row != endRow) {
             if (Math.percentChance(turnChancePercentage)) {
-                column += randint(0, 1) * 2 - 1
-                column = Math.constrain(row, 0, tilesAdvanced.getTilemapWidth() - 1)
-                let start_row = Math.floor(width / 2)
-                for (let i = -start_row; i < start_row; i++) {
-                    let tile = tiles.getTileLocation(column, row + i)
-                    tilesInPath.push(tile)
-                }
-            } else {
                 row += step
-                let start_col = Math.floor(width / 2)
-                for (let i = -start_col; i < start_col; i++) {
-                    let tile = tiles.getTileLocation(column + i, row)
-                    tilesInPath.push(tile)
-                }
+            } else {
+                column += randint(0, 1) * 2 - 1
             }
-            tilesInPath.push(tiles.getTileLocation(column, row))
+            column = Math.constrain(row, 0, tilesAdvanced.getTilemapWidth() - 1)
+            let tile = tiles.getTileLocation(column, row)
+            tilesInPath.push(tile)
         }
         return tilesInPath
     }
@@ -500,19 +482,13 @@ namespace tilesAdvanced {
     //% group="Pathfinding"
     //% weight=1
 
-    export function generatePathAcrossMap(direction: PathDirection, turnChancePercentage = 50, width = 1, startRowOrColumn = 0, endRowOrColumn = 15): tiles.Location[] {
-        if (width % 2 == 0) {
-            width--
-        }
-        width = Math.constrain(width, 1, 101)
-        console.log(width)
-        turnChancePercentage = Math.constrain(turnChancePercentage, 0, 99)
+    export function generatePathAcrossMap(direction: PathDirection, turnChancePercentage = 50, startRowOrColumn = 0, endRowOrColumn = 15): tiles.Location[] {
         let tilesInPath: tiles.Location[] = []
         if (direction == PathDirection.Up || direction == PathDirection.Down) {
-            tilesInPath = generateVerticalPath(direction, turnChancePercentage, width, startRowOrColumn, endRowOrColumn)
+            tilesInPath = generateVerticalPath(direction, turnChancePercentage, startRowOrColumn, endRowOrColumn)
         }
         else {
-            tilesInPath = generateHorizontalPath(direction, turnChancePercentage, width, startRowOrColumn, endRowOrColumn)
+            tilesInPath = generateHorizontalPath(direction, turnChancePercentage, startRowOrColumn, endRowOrColumn)
 
         }
         return tilesInPath
