@@ -256,6 +256,23 @@ namespace tilesAdvanced {
     }
 
     /**
+     * Run code when a certain kind of sprite overlaps any of the listed tiles
+     * @param kind
+     * @param tiles
+     * @param handler
+     */
+    //% group="Tile Comparisons"
+    //% weight=120 draggableParameters="reporter" blockGap=8
+    //% blockId=onoverlaplistoftiles 
+    //% block="on $sprite=sprite of kind $kind=spritekind overlaps $tiles at $location"
+    //% tiles.shadow=variables_get
+    export function onOverlapListOfTiles(kind: number, tiles: Image[], handler: (sprite: Sprite, location: tiles.Location) => void) {
+        for (let tile of tiles) {
+            scene.onOverlapTile(kind, tile, handler);
+        }
+    }
+
+    /**
      * Returns true if one sprite can see another without a wall in the way
      */
     //% blockId=checkLineOfSight
