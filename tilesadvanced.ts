@@ -515,7 +515,7 @@ namespace tilesAdvanced {
      * Creates a path across the tilemap in the given direction.
      */
     //% blockId=generatePathAcrossMap
-    //% block="generate path across map in $direction with $turnChancePercentage turn chance start $startRowOrColumn end $endRowOrColumn"
+    //% block="generate path across map in $direction with turn chance $turnChancePercentage width $width start $startRowOrColumn end $endRowOrColumn"
     //% turnChancePercentage.defl=50
     //% startRowOrColumn.defl=0
     //% endRowOrColumn.defl=15
