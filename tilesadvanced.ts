@@ -111,6 +111,27 @@ namespace tilesAdvanced {
     }
 
     /**
+     * The attached code will run when a sprite of that kind leaves the tilemap
+     * @param kind the sprite kind we check the exit of
+     * @param handler the code to run on exit
+    */
+    //% group="Tile Comparisons"
+    //% weight=98 
+    //% blockId=onLeavingTilemap
+    //% block="on $sprite of kind $kind=spritekind leaves tilemap"
+    //% draggableParameters="reporter"
+    export function onLeavingTilemap(kind: number, handler: (sprite: Sprite) => void): void {
+        game.onUpdate(() => {
+            for (let sprite of sprites.allOfKind(kind)) {
+                let pos = sprite.tilemapLocation();
+                if (pos.col < 0 || pos.col > getTilemapWidth() - 1 || pos.row < 0 || pos.row > getTilemapHeight() - 1){
+                    handler(sprite);
+                }
+            }
+        })
+    }
+
+    /**
      * Sets the wall on or off for all tiles of a given type
      */
     //% blockId=setWallOnTilesOfType
