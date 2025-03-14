@@ -164,7 +164,7 @@ namespace tilesAdvanced {
             let endCol = endTile.col;
             let row = startTile.row
             for (let col = startCol; col <= endCol; col++) {
-                tiles.setTileAt(tiles.getTileLocation(row, col), tileImage)
+                tiles.setTileAt(tiles.getTileLocation(col, row), tileImage)
             }
         }
         else if (startTile.row != endTile.row) {
@@ -172,7 +172,7 @@ namespace tilesAdvanced {
             let endRow = endTile.row;
             let col = startTile.col
             for (let row = startRow; row <= endRow; row++) {
-                tiles.setTileAt(tiles.getTileLocation(row, col), tileImage)
+                tiles.setTileAt(tiles.getTileLocation(col, row), tileImage)
             }
         }
     }
