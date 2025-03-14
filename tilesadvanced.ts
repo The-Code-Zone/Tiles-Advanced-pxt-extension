@@ -1,6 +1,6 @@
 
-enum Shapes { Plus, Square }
-enum PathDirection { Up, Down, Left, Right }
+enum Shapes { Plus, Square };
+enum PathDirection { Up, Down, Left, Right };
 
 /**
 * Adds additional tilemap functionality
@@ -139,6 +139,41 @@ namespace tilesAdvanced {
     export function swapAllTiles(from: Image, to: Image) {
         for (let tileOfType of tiles.getTilesByType(from)) {
             tiles.setTileAt(tileOfType, to);
+        }
+    }
+
+    /**
+     * Create a straight line of tiles of a given design
+     */
+    //% blockId=drawLineOfTiles
+    //% block="draw line of $tileImage from $startTile to $endTile "
+    //% tileImage.shadow=tileset_tile_picker
+    //% tileImage.decompileIndirectFixedInstances=true
+    //% startTile.shadow=mapgettile
+    //% endTile.shadow=mapgettile
+    //% group="Tilemap Population"
+    //% weight=6
+    export function drawLineOfTiles(tileImage: Image, startTile: tiles.Location, endTile: tiles.Location): void {
+
+        if (startTile.col != endTile.col && startTile.row != endTile.row) {
+            console.log("You need to provide a horizontal or vertical line")
+            console.log("I'll make diagonals when I get the chance")
+        }
+        else if (startTile.col != endTile.col) {
+            let startCol = startTile.col;
+            let endCol = endTile.col;
+            let row = startTile.row
+            for (let col = startCol; col <= endCol; col++) {
+                tiles.setTileAt(tiles.getTileLocation(row, col), tileImage)
+            }
+        }
+        else if (startTile.row != endTile.row) {
+            let startRow = startTile.row;
+            let endRow = endTile.row;
+            let col = startTile.col
+            for (let row = startRow; row <= endRow; row++) {
+                tiles.setTileAt(tiles.getTileLocation(row, col), tileImage)
+            }
         }
     }
 
