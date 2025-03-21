@@ -413,7 +413,7 @@ namespace tilesAdvanced {
     //% block="%follower=variables_get(myEnemy) resume following a sprite"
     //% group="Pathfinding"
     //% weight=6
-    export function resumeFollowingSprite(follower: PathfinderSprite) {
+    export function resumeFollowingSprite(follower: any) {
         if (follower.path.length < 1) {
             follower.isFollowing = true;
             follower.startFollowing();
