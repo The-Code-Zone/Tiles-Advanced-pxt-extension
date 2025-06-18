@@ -104,10 +104,38 @@ namespace tilesAdvanced {
     export function tileIsInList(tile: tiles.Location, tileList: tiles.Location[]): boolean {
         for (let tileInList of tileList) {
             if (tileIsTile(tile, tileInList)) {
-                return true
+                return true;
             }
         }
-        return false
+        return false;
+    }
+
+    /**
+    * Stops the sprite leaving the tilemap even if it can ghost through walls
+    * @param sprite
+    */
+    //% blockId=canLeaveTilemap
+    //% block="%sprite=variables_get(mySprite) can leave tilemap $toggle"
+    //% toggle.shadow="toggleOnOff"
+    export function canLeaveTilemap(sprite: Sprite, toggle: boolean) {
+
+        game.onUpdate(() => {
+            
+            if (toggle) {return};
+
+            if (sprite.left < 0) {
+                sprite.left = 0;
+            }
+            if (sprite.right > (tilesAdvanced.getTilemapWidth() * 16)) {
+                sprite.right = tilesAdvanced.getTilemapWidth() * 16;
+            }
+            if (sprite.top < 0) {
+                sprite.top = 0;
+            }
+            if (sprite.bottom > tilesAdvanced.getTilemapHeight() * 16) {
+                sprite.bottom = tilesAdvanced.getTilemapHeight() * 16;
+            }
+        });
     }
 
     /**
