@@ -184,8 +184,7 @@ namespace tilesAdvanced {
     export function drawLineOfTiles(tileImage: Image, startTile: tiles.Location, endTile: tiles.Location): void {
 
         if (startTile.col != endTile.col && startTile.row != endTile.row) {
-            console.log("You need to provide a horizontal or vertical line")
-            console.log("I'll make diagonals when I get the chance")
+            console.error("Start and end tiles do not produce straight line")
         }
         else if (startTile.col != endTile.col) {
             let startCol = startTile.col;
@@ -591,7 +590,6 @@ namespace tilesAdvanced {
             width--
         }
         width = Math.constrain(width, 1, 101)
-        console.log(width)
         turnChancePercentage = Math.constrain(turnChancePercentage, 0, 99)
         let tilesInPath: tiles.Location[] = []
         if (direction == PathDirection.Up || direction == PathDirection.Down) {
