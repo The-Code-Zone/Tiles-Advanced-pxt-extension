@@ -442,6 +442,7 @@ namespace tilesAdvanced {
     //% group="Pathfinding"
     //% weight=6
     export function resumeFollowingSprite(follower: any) {
+        follower = follower as PathfinderSprite
         if (follower.path.length < 1) {
             follower.isFollowing = true;
             follower.startFollowing();
@@ -455,7 +456,8 @@ namespace tilesAdvanced {
     //% block="change %follower=variables_get(myEnemy) target they follow %target=variables_get(mySprite)"
     //% group="Pathfinding"
     //% weight=7
-    export function changeTarget(follower: PathfinderSprite, target: Sprite) {
+    export function changeTarget(follower: any, target: Sprite) {
+        follower = follower as PathfinderSprite
         follower.target = target;
     }
 
