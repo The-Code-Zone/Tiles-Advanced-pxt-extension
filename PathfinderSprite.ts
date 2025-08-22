@@ -30,7 +30,6 @@ namespace tilesAdvanced {
 
         public startFollowing() {
             this.path = scene.aStar(this.tilemapLocation(), this.target.tilemapLocation());
-            this.path.shift()
             scene.followPath(this, this.path, this.speed);
         }
     }
