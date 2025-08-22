@@ -29,7 +29,11 @@ namespace tilesAdvanced {
         }
 
         public startFollowing() {
-            this.path = scene.aStar(this.tilemapLocation(), this.target.tilemapLocation());
+            let myLocation = this.tilemapLocation()
+            this.path = scene.aStar(myLocation, this.target.tilemapLocation());
+            if (myLocation.x != this.x || myLocation.y != this.y){
+                this.path.shift();
+            }
             scene.followPath(this, this.path, this.speed);
         }
     }
