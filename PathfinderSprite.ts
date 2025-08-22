@@ -115,8 +115,6 @@ namespace tilesAdvanced {
     export function changeFollowSpeed(follower: any, speed: number) {
         follower = follower as PathfinderSprite
         follower.speed = speed
-        // scene.followPath(follower, [], 0);
-        follower.startFollowing()
     }
 
 }
