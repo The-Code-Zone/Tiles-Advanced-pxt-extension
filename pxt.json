@@ -12,7 +12,9 @@
         "main.ts",
         "README.md",
         "assets.json",
-        "tilesadvanced.ts"
+        "tilesadvanced.ts",
+        "PathfinderSprite.ts",
+        "TilemapPathGenerator.ts"
     ],
     "testFiles": [
         "test.ts"
