@@ -14,7 +14,8 @@
         "assets.json",
         "tilesadvanced.ts",
         "PathfinderSprite.ts",
-        "TilemapPathGenerator.ts"
+        "TilemapPathGenerator.ts",
+        "SceneExtension.ts"
     ],
     "testFiles": [
         "test.ts"
