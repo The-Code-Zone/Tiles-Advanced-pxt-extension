@@ -359,7 +359,18 @@ namespace tilesAdvanced {
         return true
     }
 
-    
+    /**
+     * Returns the tilemap location of a given x y coordinate
+     */
+    //% blockId=tileFromCoordinate
+    //% block="tilemap location of x:$x y:$y"
+    //% group="Getting Tiles"
+    //% weight=9
+    export function tileFromCoordinate(x: number, y: number): tiles.Location {
+        let new_x = Math.floor(x / 16)
+        let new_y = Math.floor(y / 16)
+        return tiles.getTileLocation(x, y)
+    }
 
 
     /**
