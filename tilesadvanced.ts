@@ -369,7 +369,7 @@ namespace tilesAdvanced {
     export function tileFromCoordinate(x: number, y: number): tiles.Location {
         let new_x = Math.floor(x / 16)
         let new_y = Math.floor(y / 16)
-        return tiles.getTileLocation(x, y)
+        return tiles.getTileLocation(new_x, new_y)
     }
 
 
