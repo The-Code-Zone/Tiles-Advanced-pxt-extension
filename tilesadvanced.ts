@@ -55,6 +55,9 @@ namespace tilesAdvanced {
     //% group="Getting Tiles"
     //% weight=99
     export function getAdjacentTiles(shape: Shapes, tile: tiles.Location, distance: number): tiles.Location[] {
+        if (!game.currentScene().tileMap) {
+            return null;
+        }
         if (shape == 0){
             return adjacentTilesInPlus(tile, distance);
         }
@@ -87,6 +90,9 @@ namespace tilesAdvanced {
     //% group="Tile Comparisons"
     //% weight=100
     export function tileIsTile(tile: tiles.Location, otherTile: tiles.Location): boolean {
+        if (!game.currentScene().tileMap) {
+            return null;
+        }        
         if (tile.col == otherTile.col && tile.row == otherTile.row) {
             return true
         }
@@ -271,6 +277,9 @@ namespace tilesAdvanced {
     //% group="Getting Tiles"
     //% weight=7
     export function getTilemapWidth(): number {
+        if (!game.currentScene().tileMap) {
+            return null;
+        }
         return game.currentScene().tileMap.data.width;
     }
 
@@ -282,8 +291,13 @@ namespace tilesAdvanced {
     //% group="Getting Tiles"
     //% weight=8
     export function getTilemapHeight(): number {
+        if (!game.currentScene().tileMap) {
+            return null;
+        }
         return game.currentScene().tileMap.data.height;
     }
+
+    
 
     /**
      * Animates all tiles of the given type with the animation passed in on the interval given
