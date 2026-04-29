@@ -68,6 +68,32 @@ namespace tilesAdvanced {
     }
 
     /**
+     * Returns the adjacent tile of the given sprite in the direction of the arrow being pressed
+     */
+    //% blockId=getAdjacentTileFromKeyInput
+    //% block="get tile in direction of key pressed from $sprite=variables_get(mySprite)"
+    //% group="Getting Tiles"
+    //% weight=99
+
+    export function getAdjacentTileFromKeyInput(sprite: Sprite): tiles.Location {
+        let col = sprite.tilemapLocation().col
+        let row = sprite.tilemapLocation().row
+        if (controller.up.isPressed()) {
+            return tiles.getTileLocation(col, row - 1)
+        }
+        else if (controller.down.isPressed()) {
+            return tiles.getTileLocation(col, row + 1)
+        }
+        else if (controller.left.isPressed()) {
+            return tiles.getTileLocation(col - 1, row)
+        }
+        else if (controller.right.isPressed()) {
+            return tiles.getTileLocation(col + 1, row)
+        }
+        return tiles.getTileLocation(col, row)
+    }
+
+    /**
      * Returns the loaded tilemap.
      */
     //% block="get current tilemap"
