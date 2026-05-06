@@ -4,8 +4,8 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "arcade-tilemap-a-star": "github:jwunderl/arcade-tilemap-a-star#v0.4.0",
-        "arcade-sprite-data": "github:microsoft/arcade-sprite-data#v0.2.1"
+        "arcade-sprite-data": "github:microsoft/arcade-sprite-data#v0.2.1",
+        "a-star": "github:Llywelwyn/a-star#c95e75af1511c14a7a9b18b89eb37ddec75613b1"
     },
     "files": [
         "main.blocks",

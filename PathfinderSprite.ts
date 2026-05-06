@@ -21,7 +21,7 @@ namespace tilesAdvanced {
                 if (this.isFollowing) {
                     if (!tileIsTile(this.tilemapLocation(), myStart)) {
                         myStart = this.tilemapLocation();
-                        this.path = scene.aStar(myStart, this.target.tilemapLocation());
+                        this.path = scene.aStar(myStart, this.target.tilemapLocation(), scene.PathType.EightWay);
                         scene.followPath(this, this.path, this.speed);
                     }
                 }
@@ -30,7 +30,7 @@ namespace tilesAdvanced {
 
         public startFollowing() {
             let myLocation = this.tilemapLocation()
-            this.path = scene.aStar(myLocation, this.target.tilemapLocation());
+            this.path = scene.aStar(myLocation, this.target.tilemapLocation(), scene.PathType.EightWay);
             if (myLocation.x != this.x || myLocation.y != this.y){
                 this.path.shift();
             }
