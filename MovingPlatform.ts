@@ -61,7 +61,7 @@ namespace tilesAdvanced {
             if (sprite.y < wall.y) {
                 sprite.bottom = wall.top;
                 sprite.vx = wall.vx //makes it follow
-                if (sprite.vy > 0) {
+                if (sprite.vy >= 0) {
                     sprite.vy = 0; // only do if were falling. lets you jump
                 }
             } else {
