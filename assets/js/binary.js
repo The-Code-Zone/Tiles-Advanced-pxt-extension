@@ -1,4 +1,4 @@
-// meta={"simUrl":"/simulator.html","cdnUrl":"/","version":"1.2.0","target":"arcade","targetVersion":"2.0.3","repo":"tomhausen/the-code-zone-tiles-advanced"}
+// meta={"simUrl":"/simulator.html","cdnUrl":"/","version":"1.2.1","target":"arcade","targetVersion":"2.0.3","repo":"tomhausen/the-code-zone-tiles-advanced"}
 // total=1256675 new=5.87% cached=88.47% other=5.67%
 (function (ectx) {
 'use strict';
@@ -429,7 +429,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P141498(s) {
+function _main___P142296(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -831,23 +831,23 @@ switch (step) {
     s.callLocIdx = 63; s.pc = 37; return s.tmp_0;
   case 37:
     r0 = s.retval;
-    globals.MovingPlatform___140865 = (r0);
+    globals.MovingPlatform___141822 = (r0);
     s.tmp_0 = SpriteKind_create__P108109_mk(s);
     s.callLocIdx = 64; s.pc = 38; return s.tmp_0;
   case 38:
     r0 = s.retval;
-    globals.MovingPlatformHitbox___140868 = (r0);
+    globals.MovingPlatformHitbox___141825 = (r0);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-_main___P141498.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/a-star/main.ts","functionName":"<main>","argumentNames":[]}
-_main___P141498.continuations = [  ]
+_main___P142296.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/a-star/main.ts","functionName":"<main>","argumentNames":[]}
+_main___P142296.continuations = [  ]
 
-function _main___P141498_mk(s) {
+function _main___P142296_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P141498, depth: s.depth + 1,
+        parent: s, fn: _main___P142296, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -42362,7 +42362,7 @@ const sprites_BaseSpriteSayRenderer__C107889_VT = mkVTable({
   },
 });
 
-const breakpoints = setupDebugger(1, ["MovingPlatform___140865","MovingPlatformHitbox___140868"])
+const breakpoints = setupDebugger(1, ["MovingPlatform___141822","MovingPlatformHitbox___141825"])
 
-return _main___P141498
+return _main___P142296
 })
