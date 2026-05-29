@@ -75,8 +75,13 @@ namespace tilesAdvanced {
     export function spritesOfKindMoveWithMovingPlatforms(kind: number): void {
 
         game.onUpdate( () => {
+            
+            if (sprites.allOfKind(kind).length < 1) { return }
+
             for (let mover of sprites.allOfKind(kind)) {
+
                 if (_allHorizontallMovingPlatforms.length < 1){ return }
+
                 for (let wall of _allHorizontallMovingPlatforms) {
                     if (mover.overlapsWith(wall)) {
                         spriteWallCollision(mover, wall as HorizontallyMovingPlatform);
