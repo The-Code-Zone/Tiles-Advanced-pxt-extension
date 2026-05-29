@@ -7,7 +7,7 @@ enum PathDirection { Up, Down, Left, Right };
 */
 //% weight=0 color=#13a89e icon="\uf041" block="Tiles Advanced"
 //% advanced=false
-//% groups="['Getting Tiles', 'Tilemap Population', 'Tile Comparisons', 'Tile Animation', 'Pathfinding']"
+//% groups="['Getting Tiles', 'Tilemap Population', 'Tile Comparisons', 'Tile Animation', 'Pathfinding', "Moving Platform"]"
 
 namespace tilesAdvanced {
 
@@ -456,7 +456,7 @@ namespace tilesAdvanced {
         return sortedTiles
     }
 
-
+    
     
 
 }

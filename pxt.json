@@ -15,7 +15,8 @@
         "tilesadvanced.ts",
         "PathfinderSprite.ts",
         "TilemapPathGenerator.ts",
-        "SceneExtension.ts"
+        "SceneExtension.ts",
+        "MovingPlatform.ts"
     ],
     "testFiles": [
         "test.ts"
