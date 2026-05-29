@@ -24,10 +24,12 @@ namespace tilesAdvanced {
             let hitbox = sprites.create(image.create(this.image.width, 1));
             hitbox.image.fill(1);
             hitbox.setFlag(SpriteFlag.Invisible, true);
-            game.onUpdate( () => {
-                hitbox.x = this.x;
-                hitbox.bottom = this.top;
-            })
+            setTimeout( () => {
+                game.onUpdate( () => {
+                    hitbox.x = this.x;
+                    hitbox.bottom = this.top;
+                })
+            }, 0)
         }
 
     }
