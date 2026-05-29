@@ -12,11 +12,12 @@ namespace tilesAdvanced {
 
         constructor(img: Image, location: tiles.Location, vx: number){
             super(img);
+            game.currentScene().physicsEngine.addSprite(this);
             this.setKind(MovingPlatform);
             this.vx = vx;
             this.setFlag(SpriteFlag.BounceOnWall, true);
             tiles.placeOnTile(this, location);
-            this.setHitbox();
+            this.setupHitbox();
             _allHorizontallMovingPlatforms.push(this);
         }
 
@@ -41,7 +42,7 @@ namespace tilesAdvanced {
     //% group="Moving Platforms"
     //% weight=90
     //% blockSetVariable="myPlatform"
-    export function makeHorizontallyMovingPlatform(img: Image, location: tiles.Location, vx: number): HorizontallyMovingPlatform {
+    export function createHorizontallyMovingPlatform(img: Image, location: tiles.Location, vx: number): HorizontallyMovingPlatform {
         return new HorizontallyMovingPlatform(img, location, vx);
     }
     
@@ -103,3 +104,4 @@ namespace tilesAdvanced {
         return _spritesOnMovingPlatforms.indexOf(sprite) >= 0
     }
 }
+
