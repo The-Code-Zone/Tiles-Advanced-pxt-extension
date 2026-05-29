@@ -22,13 +22,13 @@ namespace tilesAdvanced {
         }
 
         private setupHitbox() {
-            let hitbox = sprites.create(image.create(this.image.width, 1));
-            hitbox.image.fill(1);
-            hitbox.setFlag(SpriteFlag.Invisible, true);
+            this.hitbox = sprites.create(image.create(this.image.width, 1));
+            this.hitbox.image.fill(1);
+            this.hitbox.setFlag(SpriteFlag.Invisible, true);
             setTimeout( () => {
                 game.onUpdate( () => {
-                    hitbox.x = this.x;
-                    hitbox.bottom = this.top;
+                    this.hitbox.x = this.x;
+                    this.hitbox.bottom = this.top;
                 })
             }, 0)
         }
