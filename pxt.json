@@ -5,7 +5,7 @@
     "dependencies": {
         "device": "*",
         "arcade-sprite-data": "github:microsoft/arcade-sprite-data#v0.2.1",
-        "a-star": "github:Llywelwyn/a-star#c95e75af1511c14a7a9b18b89eb37ddec75613b1"
+        "a-star": "github:llywelwyn/a-star#c95e75af1511c14a7a9b18b89eb37ddec75613b1"
     },
     "files": [
         "main.blocks",
@@ -16,7 +16,8 @@
         "PathfinderSprite.ts",
         "TilemapPathGenerator.ts",
         "SceneExtension.ts",
-        "MovingPlatform.ts"
+        "MovingPlatform.ts",
+        "OverlapHandler.ts"
     ],
     "testFiles": [
         "test.ts"
