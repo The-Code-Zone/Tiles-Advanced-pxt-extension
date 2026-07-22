@@ -17,6 +17,31 @@ namespace tilesAdvanced {
     let watchers: OverlapWatcher[] = []
     let loopStarted = false
 
+    // Checks every tile under the sprite's actual hitbox (not just the
+    // single tile under its center point) to see if any of them still
+    // match. This mirrors how scene.onOverlapTile itself decides overlap:
+    // "the outside edges of the images make contact."
+    function stillOverlappingTile(sprite: Sprite, tile: Image): boolean {
+        const loc = sprite.tilemapLocation()
+        const tileSize = loc.right - loc.left
+
+        const minCol = Math.floor(sprite.left / tileSize)
+        const maxCol = Math.floor((sprite.right - 1) / tileSize)
+        const minRow = Math.floor(sprite.top / tileSize)
+        const maxRow = Math.floor((sprite.bottom - 1) / tileSize)
+
+        for (let col = minCol; col <= maxCol; col++) {
+            for (let row = minRow; row <= maxRow; row++) {
+                if (col < 0 || row < 0) continue
+                const candidate = tiles.getTileLocation(col, row)
+                if (tiles.tileAtLocationEquals(candidate, tile)) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
     /**
      * Run code the moment a sprite of the given kind stops overlapping
      * the given tile (i.e. moves off of it). MakeCode Arcade has no
@@ -55,7 +80,7 @@ namespace tilesAdvanced {
                 for (const w of watchers) {
                     for (const sprite of sprites.allOfKind(w.kind)) {
                         if (w.active[sprite.id]) {
-                            const stillOn = tiles.tileAtLocationEquals(sprite.tilemapLocation(), w.tile)
+                            const stillOn = stillOverlappingTile(sprite, w.tile)
                             if (!stillOn) {
                                 w.active[sprite.id] = false
                                 w.handler(sprite)
